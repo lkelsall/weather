@@ -25,9 +25,17 @@ export default {
     };
   },
   beforeMount() {
-    navigator.geolocation.getCurrentPosition((location) => {
-      this.coordinates = location.coords;
-    });
+    navigator.geolocation.getCurrentPosition(
+      (location) => {
+        this.coordinates = location.coords;
+      },
+      (err) => {
+        console.log(err);
+        alert("your location could not be found");
+        this.coordinates = { latitude: 51.5074, longitude: -0.136439 };
+      },
+      { timeout: 5000 }
+    );
   },
 };
 </script>
