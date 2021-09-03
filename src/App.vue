@@ -3,7 +3,7 @@
     <img alt="Night hail icon" src="./assets/wi-night-hail.svg" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <template v-if="coordinates">
-      <p>{{ coordinates.latitude }}, {{ coordinates.longitude }}</p>
+      <p>{{ coordinates[0] }}, {{ coordinates[1] }}</p>
     </template>
     <template v-else>
       <p>...Geolocating...</p>
@@ -13,6 +13,7 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
+import { getCoordinates } from "./utils/geolocation.utils.js";
 
 export default {
   name: "App",
@@ -24,18 +25,14 @@ export default {
       coordinates: null,
     };
   },
-  beforeMount() {
-    navigator.geolocation.getCurrentPosition(
-      (location) => {
-        this.coordinates = location.coords;
-      },
-      (err) => {
-        console.log(err);
-        alert("your location could not be found");
-        this.coordinates = { latitude: 51.5074, longitude: -0.136439 };
-      },
-      { timeout: 5000 }
-    );
+  async mounted() {
+    // request device location from the browser
+    try {
+      this.coordinates = await getCoordinates({ timeout: 5000 });
+    } catch (err) {
+      console.log(err, "using default coordinates");
+      this.coordinates = [51.5074, -0.136439];
+    }
   },
 };
 </script>
