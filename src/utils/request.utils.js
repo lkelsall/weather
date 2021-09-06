@@ -8,6 +8,11 @@ export const fetchAddress = (coordinates) => {
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates[0]},${coordinates[1]}&key=${google_api_key}`
     )
     .then((response) => {
-      return response.data.results[0].address_components.slice(2, 4);
+      return response.data.results[0].address_components
+        .slice(2, 4)
+        .map((addressComponent) => {
+          return addressComponent.long_name;
+        })
+        .join(", ");
     });
 };
