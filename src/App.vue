@@ -2,8 +2,8 @@
   <div id="app">
     <img alt="Night hail icon" src="./assets/wi-night-hail.svg" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    <template v-if="coordinates">
-      <p>{{ coordinates[0] }}, {{ coordinates[1] }}</p>
+    <template v-if="address">
+      <p>{{ address }}</p>
     </template>
     <template v-else>
       <p>...Geolocating...</p>
@@ -14,6 +14,7 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import { getCoordinates } from "./utils/geolocation.utils.js";
+import { fetchAddress } from "./utils/request.utils.js";
 
 export default {
   name: "App",
@@ -23,16 +24,24 @@ export default {
   data() {
     return {
       coordinates: null,
+      address: null,
     };
   },
-  async mounted() {
-    // request device location from the browser
-    try {
-      this.coordinates = await getCoordinates({ timeout: 5000 });
-    } catch (err) {
-      console.log(err, "using default coordinates");
-      this.coordinates = [51.5074, -0.136439];
-    }
+  mounted() {
+    getCoordinates({ timeout: 5000 })
+      .then((coordinates) => {
+        this.coordinates = coordinates;
+      })
+      .catch((err) => {
+        console.log(err, "using default coordinates");
+        this.coordinates = [51.5074, -0.136439];
+      })
+      .then(() => {
+        return fetchAddress(this.coordinates);
+      })
+      .then((address) => {
+        this.address = address;
+      });
   },
 };
 </script>
