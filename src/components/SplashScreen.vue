@@ -24,11 +24,15 @@ export default {
       "wi-night-fog.svg",
       "wi-rain-wind.svg",
     ];
+    let imageIndex = 0;
 
     setInterval(() => {
-      this.imageFilename =
-        imageLibrary[Math.floor(Math.random() * imageLibrary.length)];
-    }, 3000);
+      if (imageIndex >= imageLibrary.length) {
+        imageIndex = 0;
+      }
+      this.imageFilename = imageLibrary[imageIndex];
+      imageIndex++;
+    }, 2000);
   },
   methods: {
     getImageSrc: (filename) => {
