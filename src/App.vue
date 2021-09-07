@@ -1,25 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Night hail icon" src="./assets/wi-night-hail.svg" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
     <template v-if="address">
       <p>{{ address }}</p>
     </template>
     <template v-else>
-      <p>...Geolocating...</p>
+      <SplashScreen />
     </template>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import SplashScreen from "./components/SplashScreen.vue";
 import { getCoordinates } from "./utils/geolocation.utils.js";
 import { fetchAddress, fetchWeather } from "./utils/request.utils.js";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    SplashScreen,
   },
   data() {
     return {

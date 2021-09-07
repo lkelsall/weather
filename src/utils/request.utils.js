@@ -18,7 +18,7 @@ export const fetchAddress = (coordinates) => {
 export const fetchWeather = (coordinates) => {
   return axios
     .get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates[0]}&lon=${coordinates[1]}&appid=${process.env.VUE_APP_OPENWEATHER_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?units=metric&lat=${coordinates[0]}&lon=${coordinates[1]}&appid=${process.env.VUE_APP_OPENWEATHER_KEY}`
     )
     .then((response) => {
       return response.data.list;
