@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <template v-if="address">
-      {{ address }}
-    </template>
-    <template v-else>
+    <template>
       <SplashScreen />
     </template>
   </div>
