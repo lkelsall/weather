@@ -36,3 +36,20 @@ export const getCoordinates = (options) => {
     );
   });
 };
+
+export const chooseIcon = (weatherId) => {
+  switch (String(weatherId)[0]) {
+    case "2":
+      return "wi-thunderstorm.svg";
+    case "3":
+      return "wi-showers.svg";
+    case "5":
+      return "wi-rain.svg";
+    case "6":
+      return "wi-snow-wind.svg";
+    case "7":
+      return "wi-fog.svg";
+    default:
+      return "wi-day-sunny.svg";
+  }
+};
