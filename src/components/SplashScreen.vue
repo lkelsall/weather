@@ -17,12 +17,12 @@ export default {
     const imageLibrary = [
       "wi-day-cloudy.svg",
       "wi-day-cloudy-gusts.svg",
-      "wi-day-haze.svg",
       "wi-day-storm-showers.svg",
       "wi-day-windy.svg",
       "wi-night-alt-rain.svg",
       "wi-night-fog.svg",
       "wi-rain-wind.svg",
+      "wi-night-hail.svg",
     ];
     let imageIndex = 0;
 
