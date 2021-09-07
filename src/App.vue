@@ -14,7 +14,7 @@
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import { getCoordinates } from "./utils/geolocation.utils.js";
-import { fetchAddress } from "./utils/request.utils.js";
+import { fetchAddress, fetchWeather } from "./utils/request.utils.js";
 
 export default {
   name: "App",
@@ -25,6 +25,7 @@ export default {
     return {
       coordinates: null,
       address: null,
+      weather: null,
     };
   },
   mounted() {
@@ -37,10 +38,14 @@ export default {
         this.coordinates = [51.5074, -0.136439];
       })
       .then(() => {
-        return fetchAddress(this.coordinates);
+        return Promise.all([
+          fetchAddress(this.coordinates),
+          fetchWeather(this.coordinates),
+        ]);
       })
-      .then((address) => {
+      .then(([address, weather]) => {
         this.address = address;
+        this.weather = weather;
       });
   },
 };
