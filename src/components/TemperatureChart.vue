@@ -24,11 +24,11 @@ export default {
     };
   },
   created() {
-    const labels = this.weather.slice(0, 12).map((moment) => {
-      return moment.dt_txt.slice(11, 16);
+    const labels = this.weather.slice(0, 12).map((snapshot) => {
+      return snapshot.dt_txt.slice(11, 16);
     });
-    const temperatures = this.weather.slice(0, 12).map((moment) => {
-      return moment.main.temp;
+    const temperatures = this.weather.slice(0, 12).map((snapshot) => {
+      return snapshot.main.temp;
     });
     this.chartData = {
       labels: labels,
@@ -48,6 +48,9 @@ export default {
 
 <style scoped>
 .chart-container {
-  margin: 50px;
+  margin: 10px 50px;
+}
+h3 {
+  margin: 0;
 }
 </style>

@@ -3,6 +3,7 @@
     <template v-if="weather">
       <PageHeader v-bind:address="address" v-bind:weather="weather" />
       <TemperatureChart v-bind:weather="weather" />
+      <OutlookCard v-bind:snapshot="weather[0]" />
     </template>
     <template v-else>
       <SplashScreen />
@@ -14,6 +15,7 @@
 import SplashScreen from "./components/SplashScreen.vue";
 import PageHeader from "./components/PageHeader.vue";
 import TemperatureChart from "./components/TemperatureChart.vue";
+import OutlookCard from "./components/OutlookCard.vue";
 import { fetchAddress, fetchWeather, getCoordinates } from "./utils/utils.js";
 
 export default {
@@ -22,6 +24,7 @@ export default {
     SplashScreen,
     PageHeader,
     TemperatureChart,
+    OutlookCard,
   },
   data() {
     return {

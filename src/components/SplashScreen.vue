@@ -1,6 +1,6 @@
 <template>
   <div class="centred-content">
-    <img alt="Weather icon" v-bind:src="getImageSrc(this.imageFilename)" />
+    <img alt="Weather icon" v-bind:src="getImageSrc(imageFilename)" />
     <h3>Loading...</h3>
   </div>
 </template>
