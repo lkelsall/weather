@@ -50,4 +50,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+img {
+  height: 100px;
+}
 </style>
