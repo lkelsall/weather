@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <template v-if="weather">
-      <PageHeader v-bind:placeName="address" v-bind:weatherData="weather[0]" />
+      <PageHeader v-bind:address="address" v-bind:weather="weather" />
+      <TemperatureChart v-bind:weather="weather" />
     </template>
     <template v-else>
       <SplashScreen />
@@ -12,6 +13,7 @@
 <script>
 import SplashScreen from "./components/SplashScreen.vue";
 import PageHeader from "./components/PageHeader.vue";
+import TemperatureChart from "./components/TemperatureChart.vue";
 import { fetchAddress, fetchWeather, getCoordinates } from "./utils/utils.js";
 
 export default {
@@ -19,6 +21,7 @@ export default {
   components: {
     SplashScreen,
     PageHeader,
+    TemperatureChart,
   },
   data() {
     return {

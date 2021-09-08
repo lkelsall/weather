@@ -1,14 +1,14 @@
 <template>
   <header class="page-header">
     <h3>
-      {{ weatherData.main.temp }}°C and
+      {{ weather[0].main.temp }}°C and
       {{
-        weatherData.weather[0].description[0].toUpperCase() +
-          weatherData.weather[0].description.slice(1)
+        weather[0].weather[0].description[0].toUpperCase() +
+          weather[0].weather[0].description.slice(1)
       }}
       in
     </h3>
-    <h3>{{ placeName }}</h3>
+    <h3>{{ address }}</h3>
   </header>
 </template>
 
@@ -16,8 +16,8 @@
 export default {
   name: "PageHeader",
   props: {
-    placeName: String,
-    weatherData: Object,
+    address: String,
+    weather: Array,
   },
 };
 </script>
