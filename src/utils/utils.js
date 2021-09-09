@@ -3,25 +3,20 @@ import axios from "axios";
 export const fetchAddress = (coordinates) => {
   return axios
     .get(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates[0]},${coordinates[1]}&key=${process.env.VUE_APP_GOOGLE_MAPS_KEY}`
+      `https://vue-weather-be.herokuapp.com/api/address?lat=${coordinates[0]}&lng=${coordinates[1]}`
     )
     .then((response) => {
-      return response.data.results[0].address_components
-        .slice(2, 4)
-        .map((addressComponent) => {
-          return addressComponent.long_name;
-        })
-        .join(", ");
+      return response.data.address;
     });
 };
 
 export const fetchWeather = (coordinates) => {
   return axios
     .get(
-      `https://api.openweathermap.org/data/2.5/forecast?units=metric&lat=${coordinates[0]}&lon=${coordinates[1]}&appid=${process.env.VUE_APP_OPENWEATHER_KEY}`
+      `https://vue-weather-be.herokuapp.com/api/weather?lat=${coordinates[0]}&lng=${coordinates[1]}`
     )
     .then((response) => {
-      return response.data.list;
+      return response.data.weather;
     });
 };
 
