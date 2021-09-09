@@ -1,24 +1,9 @@
-# weather
+# Simple Weather App
 
-## Project setup
-```
-npm install
-```
+A simple weather forecast website written in Vue.js.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+The live version of this app is hosted at https://vue-example-weather.netlify.app/. It may take a few seconds to wake up.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+The weather data is sourced from OpenWeather, and Google's geocoding API is used to lookup the client's location. These API calls are made from a custom backend which has its own repo at https://github.com/lkelsall/weather-be.
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The weather icons are from https://erikflowers.github.io/weather-icons/
