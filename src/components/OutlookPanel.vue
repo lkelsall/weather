@@ -3,7 +3,7 @@
     <h3>Outlook</h3>
     <div class="outlook-cards">
       <OutlookCard
-        v-for="snapshot in weather.slice(0, 7)"
+        v-for="snapshot in weather.slice(0, 12)"
         v-bind:key="snapshot.dt"
         v-bind:snapshot="snapshot"
       />
@@ -25,14 +25,15 @@ export default {
 
 <style scoped>
 .outlook-container {
-  margin: 10px 50px;
+  margin: 40px 50px;
 }
 .outlook-cards {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 h3 {
-  margin: 0;
+  margin: 0 0 10px 0;
 }
 </style>

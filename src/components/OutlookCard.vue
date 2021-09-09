@@ -34,9 +34,10 @@ export default {
 <style scoped>
 .card-container {
   height: 175px;
-  width: 150px;
+  width: 125px;
   text-align: center;
   border-bottom: 4px solid cornflowerblue;
+  margin: 10px 10px;
 }
 #weather-description {
   font-weight: bold;
