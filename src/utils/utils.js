@@ -50,6 +50,10 @@ export const chooseIcon = (weatherId) => {
     case "7":
       return "wi-fog.svg";
     default:
-      return "wi-day-sunny.svg";
+      if (weatherId === 800) {
+        return "wi-day-sunny.svg";
+      } else {
+        return "wi-cloud.svg";
+      }
   }
 };
