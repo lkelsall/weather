@@ -34,10 +34,10 @@ export default {
 <style scoped>
 .card-container {
   height: 175px;
-  width: 125px;
+  width: 10%;
   text-align: center;
   border-bottom: 4px solid cornflowerblue;
-  margin: 10px 10px;
+  margin: 10px 1%;
 }
 #weather-description {
   font-weight: bold;
@@ -47,5 +47,11 @@ p {
 }
 img {
   height: 75px;
+}
+@media (max-width: 600px) {
+  .card-container {
+    width: 25%;
+    margin: 2.5%;
+  }
 }
 </style>
