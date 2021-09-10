@@ -2,8 +2,8 @@
   <div class="chart-container">
     <h3>Temperature</h3>
     <LineChart
-      v-bind:width="500"
-      v-bind:height="100"
+      v-bind:width="chartWidth"
+      v-bind:height="chartHeight"
       v-bind:chartData="chartData"
     />
   </div>
@@ -21,9 +21,15 @@ export default {
   data() {
     return {
       chartData: null,
+      chartHeight: 100,
+      chartWidth: 400,
     };
   },
   created() {
+    if (screen.width < 600) {
+      this.chartWidth = 100;
+    }
+
     const labels = this.weather.slice(0, 12).map((snapshot) => {
       return snapshot.dt_txt.slice(11, 16);
     });
